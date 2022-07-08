@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+    accounts: 
+        image: ammanchipavan/accounts:latest
+        mem_limit: 700m
+        ports:
+            - "8080:8080"
+        networks:
+            - ammanchipavan-network
+
+    loans: 
+        image: ammanchipavan/loans:latest
+        mem_limit: 700m
+        ports:
+            - "8090:8090"
+        networks:
+            - ammanchipavan-network
+
+    cards: 
+        image: ammanchipavan/cards:latest
+        mem_limit: 700m
+        ports:
+            - "9000:9000"
+        networks:
+            - ammanchipavan-network
+
+networks:
+    ammanchipavan-network:
