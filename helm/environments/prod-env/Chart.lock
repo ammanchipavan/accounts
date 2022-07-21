@@ -1,0 +1,27 @@
+dependencies:
+- name: pavanbank-common
+  repository: file://../../pavanbank-common
+  version: 0.1.0
+- name: zipkin
+  repository: file://../../pavanbank-services/zipkin
+  version: 0.1.0
+- name: configserver
+  repository: file://../../pavanbank-services/configserver
+  version: 0.1.0
+- name: eurekaserver
+  repository: file://../../pavanbank-services/eurekaserver
+  version: 0.1.0
+- name: accounts
+  repository: file://../../pavanbank-services/accounts
+  version: 0.1.0
+- name: cards
+  repository: file://../../pavanbank-services/cards
+  version: 0.1.0
+- name: loans
+  repository: file://../../pavanbank-services/loans
+  version: 0.1.0
+- name: gatewayserver
+  repository: file://../../pavanbank-services/gatewayserver
+  version: 0.1.0
+digest: sha256:712a162efe7dd28f27665a63e139e3cd5652487998857f39b37bcbd9165c7cd4
+generated: "2022-07-21T14:47:33.0401609+05:30"

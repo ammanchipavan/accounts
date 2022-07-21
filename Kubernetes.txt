@@ -1,0 +1,80 @@
+LAST SEEN   TYPE      REASON                 OBJECT                                      MESSAGE
+54m         Normal    ScalingReplicaSet      deployment/accounts-deployment              Scaled up replica set accounts-deployment-5865c6d7f8 to 3
+55m         Normal    DeletingLoadBalancer   service/accounts-service                    Deleting load balancer
+55m         Normal    DeletedLoadBalancer    service/accounts-service                    Deleted load balancer
+2m12s       Normal    ScalingReplicaSet      deployment/accounts-deployment              Scaled down replica set accounts-deployment-5865c6d7f8 to 2
+54m         Normal    SuccessfulDelete       replicaset/accounts-deployment-5865c6d7f8   Deleted pod: accounts-deployment-5865c6d7f8-w2f8p
+54m         Normal    Killing                pod/accounts-deployment-5865c6d7f8-w2f8p    Stopping container accounts
+54m         Normal    EnsuringLoadBalancer   service/accounts-service                    Ensuring load balancer
+54m         Normal    EnsuredLoadBalancer    service/accounts-service                    Ensured load balancer
+54m         Normal    Scheduled              pod/accounts-deployment-5865c6d7f8-c868g    Successfully assigned default/accounts-deployment-5865c6d7f8-c868g to gke-cluster-1-default-pool-55f1c67a-tcbd
+54m         Normal    SuccessfulCreate       replicaset/accounts-deployment-5865c6d7f8   Created pod: accounts-deployment-5865c6d7f8-c868g
+54m         Warning   FailedMount            pod/accounts-deployment-5865c6d7f8-c868g    MountVolume.SetUp failed for volume "kube-api-access-pzdgb" : failed to sync configmap cache: timed out waiting for the condition
+54m         Normal    Created                pod/accounts-deployment-5865c6d7f8-c868g    Created container accounts
+54m         Normal    Pulling                pod/accounts-deployment-5865c6d7f8-c868g    Pulling image "ammanchipavan/accounts:latest"
+54m         Normal    Pulled                 pod/accounts-deployment-5865c6d7f8-c868g    Successfully pulled image "ammanchipavan/accounts:latest" in 500.542394ms
+54m         Normal    Started                pod/accounts-deployment-5865c6d7f8-c868g    Started container accounts
+53m         Normal    Killing                pod/accounts-deployment-5865c6d7f8-c868g    Stopping container accounts
+53m         Normal    SuccessfulCreate       replicaset/accounts-deployment-5865c6d7f8   Created pod: accounts-deployment-5865c6d7f8-dj8kn
+53m         Normal    Scheduled              pod/accounts-deployment-5865c6d7f8-dj8kn    Successfully assigned default/accounts-deployment-5865c6d7f8-dj8kn to gke-cluster-1-default-pool-55f1c67a-tcbd
+53m         Normal    Created                pod/accounts-deployment-5865c6d7f8-dj8kn    Created container accounts
+53m         Normal    Pulling                pod/accounts-deployment-5865c6d7f8-dj8kn    Pulling image "ammanchipavan/accounts:latest"
+53m         Normal    Pulled                 pod/accounts-deployment-5865c6d7f8-dj8kn    Successfully pulled image "ammanchipavan/accounts:latest" in 437.474871ms
+53m         Normal    Started                pod/accounts-deployment-5865c6d7f8-dj8kn    Started container accounts
+2m17s       Normal    ScalingReplicaSet      deployment/accounts-deployment              Scaled up replica set accounts-deployment-686f694d57 to 1
+2m17s       Normal    Scheduled              pod/accounts-deployment-686f694d57-ph9kv    Successfully assigned default/accounts-deployment-686f694d57-ph9kv to gke-cluster-1-default-pool-55f1c67a-tcbd
+2m17s       Normal    SuccessfulCreate       replicaset/accounts-deployment-686f694d57   Created pod: accounts-deployment-686f694d57-ph9kv
+2m16s       Normal    Pulling                pod/accounts-deployment-686f694d57-ph9kv    Pulling image "ammanchipavan/accounts:k8s"
+2m13s       Normal    Started                pod/accounts-deployment-686f694d57-ph9kv    Started container accounts
+2m13s       Normal    Created                pod/accounts-deployment-686f694d57-ph9kv    Created container accounts
+2m13s       Normal    Pulled                 pod/accounts-deployment-686f694d57-ph9kv    Successfully pulled image "ammanchipavan/accounts:k8s" in 2.929329848s
+2m7s        Normal    Killing                pod/accounts-deployment-5865c6d7f8-dj8kn    Stopping container accounts
+2m12s       Normal    ScalingReplicaSet      deployment/accounts-deployment              Scaled up replica set accounts-deployment-686f694d57 to 2
+2m12s       Normal    SuccessfulCreate       replicaset/accounts-deployment-686f694d57   Created pod: accounts-deployment-686f694d57-h6xlz
+2m12s       Normal    Scheduled              pod/accounts-deployment-686f694d57-h6xlz    Successfully assigned default/accounts-deployment-686f694d57-h6xlz to gke-cluster-1-default-pool-55f1c67a-k743
+2m12s       Normal    SuccessfulDelete       replicaset/accounts-deployment-5865c6d7f8   Deleted pod: accounts-deployment-5865c6d7f8-dj8kn
+2m11s       Normal    Pulling                pod/accounts-deployment-686f694d57-h6xlz    Pulling image "ammanchipavan/accounts:k8s"
+2m7s        Normal    SuccessfulDelete       replicaset/accounts-deployment-5865c6d7f8   Deleted pod: accounts-deployment-5865c6d7f8-vkvnm
+2m7s        Normal    Scheduled              pod/accounts-deployment-686f694d57-llnfk    Successfully assigned default/accounts-deployment-686f694d57-llnfk to gke-cluster-1-default-pool-55f1c67a-nxp9
+2m7s        Normal    Killing                pod/accounts-deployment-5865c6d7f8-vkvnm    Stopping container accounts
+2m7s        Normal    Started                pod/accounts-deployment-686f694d57-h6xlz    Started container accounts
+2m7s        Normal    SuccessfulCreate       replicaset/accounts-deployment-686f694d57   Created pod: accounts-deployment-686f694d57-llnfk
+2m7s        Normal    ScalingReplicaSet      deployment/accounts-deployment              Scaled down replica set accounts-deployment-5865c6d7f8 to 1
+2m7s        Normal    ScalingReplicaSet      deployment/accounts-deployment              Scaled up replica set accounts-deployment-686f694d57 to 3
+2m7s        Normal    Pulled                 pod/accounts-deployment-686f694d57-h6xlz    Successfully pulled image "ammanchipavan/accounts:k8s" in 3.395990571s
+2m7s        Normal    Created                pod/accounts-deployment-686f694d57-h6xlz    Created container accounts
+2m6s        Normal    Pulling                pod/accounts-deployment-686f694d57-llnfk    Pulling image "ammanchipavan/accounts:k8s"
+2m3s        Normal    Started                pod/accounts-deployment-686f694d57-llnfk    Started container accounts
+2m3s        Normal    Created                pod/accounts-deployment-686f694d57-llnfk    Created container accounts
+2m3s        Normal    Pulled                 pod/accounts-deployment-686f694d57-llnfk    Successfully pulled image "ammanchipavan/accounts:k8s" in 2.792016869s
+2m2s        Normal    SuccessfulDelete       replicaset/accounts-deployment-5865c6d7f8   Deleted pod: accounts-deployment-5865c6d7f8-ndvmf
+2m2s        Normal    Killing                pod/accounts-deployment-5865c6d7f8-ndvmf    Stopping container accounts
+2m2s        Normal    ScalingReplicaSet      deployment/accounts-deployment              Scaled down replica set accounts-deployment-5865c6d7f8 to 0
+69s         Normal    SuccessfulCreate       replicaset/accounts-deployment-5865c6d7f8   Created pod: accounts-deployment-5865c6d7f8-nkjw2
+69s         Normal    Scheduled              pod/accounts-deployment-5865c6d7f8-nkjw2    Successfully assigned default/accounts-deployment-5865c6d7f8-nkjw2 to gke-cluster-1-default-pool-55f1c67a-tcbd
+69s         Normal    ScalingReplicaSet      deployment/accounts-deployment              Scaled up replica set accounts-deployment-5865c6d7f8 to 1
+68s         Normal    Pulling                pod/accounts-deployment-5865c6d7f8-nkjw2    Pulling image "ammanchipavan/accounts:latest"
+67s         Normal    Scheduled              pod/accounts-deployment-5865c6d7f8-mkz46    Successfully assigned default/accounts-deployment-5865c6d7f8-mkz46 to gke-cluster-1-default-pool-55f1c67a-k743
+67s         Normal    Started                pod/accounts-deployment-5865c6d7f8-nkjw2    Started container accounts
+67s         Normal    Created                pod/accounts-deployment-5865c6d7f8-nkjw2    Created container accounts
+67s         Normal    Killing                pod/accounts-deployment-686f694d57-ph9kv    Stopping container accounts
+67s         Normal    SuccessfulCreate       replicaset/accounts-deployment-5865c6d7f8   Created pod: accounts-deployment-5865c6d7f8-mkz46
+67s         Normal    ScalingReplicaSet      deployment/accounts-deployment              Scaled up replica set accounts-deployment-5865c6d7f8 to 2
+67s         Normal    SuccessfulDelete       replicaset/accounts-deployment-686f694d57   Deleted pod: accounts-deployment-686f694d57-ph9kv
+67s         Normal    Pulled                 pod/accounts-deployment-5865c6d7f8-nkjw2    Successfully pulled image "ammanchipavan/accounts:latest" in 480.99913ms
+67s         Normal    ScalingReplicaSet      deployment/accounts-deployment              Scaled down replica set accounts-deployment-686f694d57 to 2
+66s         Normal    Pulling                pod/accounts-deployment-5865c6d7f8-mkz46    Pulling image "ammanchipavan/accounts:latest"
+63s         Normal    Started                pod/accounts-deployment-5865c6d7f8-mkz46    Started container accounts
+63s         Normal    Created                pod/accounts-deployment-5865c6d7f8-mkz46    Created container accounts
+63s         Normal    Pulled                 pod/accounts-deployment-5865c6d7f8-mkz46    Successfully pulled image "ammanchipavan/accounts:latest" in 2.928516654s
+62s         Normal    SuccessfulDelete       replicaset/accounts-deployment-686f694d57   Deleted pod: accounts-deployment-686f694d57-h6xlz
+62s         Normal    Killing                pod/accounts-deployment-686f694d57-h6xlz    Stopping container accounts
+62s         Normal    Scheduled              pod/accounts-deployment-5865c6d7f8-2jw7h    Successfully assigned default/accounts-deployment-5865c6d7f8-2jw7h to gke-cluster-1-default-pool-55f1c67a-nxp9
+58s         Normal    ScalingReplicaSet      deployment/accounts-deployment              (combined from similar events): Scaled down replica set accounts-deployment-686f694d57 to 0
+62s         Normal    SuccessfulCreate       replicaset/accounts-deployment-5865c6d7f8   Created pod: accounts-deployment-5865c6d7f8-2jw7h
+61s         Normal    Pulling                pod/accounts-deployment-5865c6d7f8-2jw7h    Pulling image "ammanchipavan/accounts:latest"
+58s         Normal    Started                pod/accounts-deployment-5865c6d7f8-2jw7h    Started container accounts
+58s         Normal    Killing                pod/accounts-deployment-686f694d57-llnfk    Stopping container accounts
+58s         Normal    Created                pod/accounts-deployment-5865c6d7f8-2jw7h    Created container accounts
+58s         Normal    Pulled                 pod/accounts-deployment-5865c6d7f8-2jw7h    Successfully pulled image "ammanchipavan/accounts:latest" in 2.580392237s
+58s         Normal    SuccessfulDelete       replicaset/accounts-deployment-686f694d57   Deleted pod: accounts-deployment-686f694d57-llnfk

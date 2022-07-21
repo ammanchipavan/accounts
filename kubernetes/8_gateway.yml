@@ -44,7 +44,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: gatewayserver
+  name: gatewayserver-service
 spec:
   selector:
     app: gatewayserver

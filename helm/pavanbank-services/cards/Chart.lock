@@ -1,0 +1,6 @@
+dependencies:
+- name: pavanbank-common
+  repository: file://../../pavanbank-common
+  version: 0.1.0
+digest: sha256:041cba9a5538b31821363d66ded756825dc079a461093fcee0983d2e065f8a5f
+generated: "2022-07-21T14:46:00.3378765+05:30"
