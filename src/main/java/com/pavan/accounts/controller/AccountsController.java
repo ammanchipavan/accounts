@@ -3,6 +3,9 @@
  */
 package com.pavan.accounts.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +20,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.pavan.accounts.config.AccountsServiceConfig;
 import com.pavan.accounts.model.Accounts;
+import com.pavan.accounts.model.Cards;
 import com.pavan.accounts.model.Customer;
 import com.pavan.accounts.model.CustomerDetails;
+import com.pavan.accounts.model.Loans;
 import com.pavan.accounts.model.Properties;
 import com.pavan.accounts.repository.AccountsRepository;
 import com.pavan.accounts.service.client.CardsFeignClient;
@@ -46,10 +51,10 @@ public class AccountsController {
 	AccountsServiceConfig accountsServiceConfig;
 	
 	@Autowired
-	LoansFeignClient loansClient;
+	LoansFeignClient loansFeignClient;
 	
 	@Autowired
-	CardsFeignClient cardsClient;
+	CardsFeignClient cardsFeignClient;
 
 	@PostMapping("/myAccount")
 	@Timed(value = "getAccountDetails.time", description = "Time taken to return Account Details")
@@ -73,37 +78,32 @@ public class AccountsController {
 	}
 	
 	@PostMapping("/myCustomerDetails")
-	// @CircuitBreaker(name = "detailsForCustomerSupportApp", fallbackMethod = "myCustomerDetailsFallback")
+	@CircuitBreaker(name = "detailsForCustomerSupportApp", fallbackMethod = "myCustomerDetailsFallback")
 	@Retry(name="retryForCustomerDetails", fallbackMethod = "myCustomerDetailsFallback")
-	public CustomerDetails getCustomerDetails(@RequestHeader("pavanbank-correlation-id") String correlationId, @RequestBody Customer customer) {
-		logger.info("getCustomerDetails() method started");
+	public CustomerDetails myCustomerDetails(@RequestHeader("pavanbank-correlation-id") String correlationId, @RequestBody Customer customer) {
+		logger.info("myCustomerDetails() method started");
+		
+		Accounts accounts = accountsRepository.findByCustomerId(customer.getCustomerId());
+		List<Loans> loans = loansFeignClient.getLoansDetails(correlationId,customer);
+		List<Cards> cards = cardsFeignClient.getCardDetails(correlationId,customer);
+
 		CustomerDetails customerDetails = new CustomerDetails();
-		customerDetails.setAccounts(accountsRepository.findByCustomerId(customer.getCustomerId()));
-		customerDetails.setLoans(loansClient.getLoansDetails(correlationId, customer));
-		customerDetails.setCards(cardsClient.getCardDetails(correlationId, customer));
-		logger.info("getCustomerDetails() method ended");
+		customerDetails.setAccounts(accounts);
+		customerDetails.setLoans(loans);
+		customerDetails.setCards(cards);
+		logger.info("myCustomerDetails() method ended");
 		
 		return customerDetails;
 	}
 	
-	@PostMapping("/myCustomerAccountLoanDetails")
-	@CircuitBreaker(name = "detailsForCustomerSupportApp", fallbackMethod = "myCustomerAccountsLoansDetailsFallback")
-	public CustomerDetails getCustomerAccountsLoansDetails(@RequestHeader("pavanbank-correlation-id") String correlationId, @RequestBody Customer customer) {
-		logger.info("getCustomerAccountsLoansDetails() method started");
-		CustomerDetails customerDetails = new CustomerDetails();
-		customerDetails.setAccounts(accountsRepository.findByCustomerId(customer.getCustomerId()));
-		customerDetails.setLoans(loansClient.getLoansDetails(correlationId, customer));
-		customerDetails.setCards(cardsClient.getCardDetails(correlationId, customer));
-		logger.info("getCustomerAccountsLoansDetails() method started");
+	private CustomerDetails myCustomerDetailsFallback(@RequestHeader("pavanbank-correlation-id") String correlationId, Customer customer, Throwable t) {
 		
-		return customerDetails;
-	}
-	
-	private CustomerDetails myCustomerDetailsFallback(String correlationId, Customer customer, Throwable t) {
+		Accounts accounts = accountsRepository.findByCustomerId(customer.getCustomerId());
+		//List<Loans> loans = loansFeignClient.getLoansDetails(correlationId,customer);
 		
 		CustomerDetails customerDetails = new CustomerDetails();
-		customerDetails.setAccounts(accountsRepository.findByCustomerId(customer.getCustomerId()));
-		customerDetails.setLoans(loansClient.getLoansDetails(correlationId, customer));
+		customerDetails.setAccounts(accounts);
+		//customerDetails.setLoans(loans);
 		
 		return customerDetails;
 	}
@@ -112,19 +112,13 @@ public class AccountsController {
 	@GetMapping("/sayHello")
 	@RateLimiter(name = "sayHello", fallbackMethod = "sayHelloFallback")
 	public String sayHello() {
-		return "Hello, Welcome to PavanBank v1 -> SayHello";
+		Optional<String> podName = Optional.ofNullable(System.getenv("HOSTNAME"));
+		return "Hello, Welcome to PavanBank v1 -> SayHello, podName:" + podName.get();
 	}
 
 	private String sayHelloFallback(Throwable t) {
 		return "Hello, Welcome to PavanBank  v1 -> SayHelloFallBack";
 	}
 	
-	private CustomerDetails myCustomerAccountsLoansDetailsFallback(String correlationId, Customer customer, Throwable t) {
-		CustomerDetails customerDetails = new CustomerDetails();
-		customerDetails.setAccounts(accountsRepository.findByCustomerId(customer.getCustomerId()));
-		customerDetails.setLoans(loansClient.getLoansDetails(correlationId, customer));
-		
-		return customerDetails;
-	}
 
 }
